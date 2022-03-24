@@ -1,6 +1,8 @@
-const tiles = document.querySelector(".tiles");
-const keyboard = document.querySelector(".keyboard");
+// get elements
+const tilesContainer = document.querySelector(".tiles-container");
+const keyboardContainer = document.querySelector(".keyboard-container");
 
+// make keyboard
 const keys = [
   "Q",
   "W",
@@ -32,7 +34,7 @@ const keys = [
   "<<",
 ];
 
-const handleButtonClick = () => {
+const handleClick = () => {
   console.log("button clicked");
 };
 
@@ -40,6 +42,28 @@ keys.forEach((key) => {
   const button = document.createElement("button");
   button.textContent = key;
   button.setAttribute("id", key);
-  button.addEventListener("click", handleButtonClick);
-  keyboard.append(button);
+  button.addEventListener("click", handleClick);
+  keyboardContainer.append(button);
+});
+
+// make tiles
+const tilesRows = [
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+];
+
+tilesRows.forEach((row, rowIndex) => {
+  const rowElement = document.createElement("div");
+  rowElement.setAttribute("id", `row-${rowIndex}`);
+  row.forEach((tile, tileIndex) => {
+    const tileElement = document.createElement("div");
+    tileElement.setAttribute("id", `row-${rowIndex}-tile-${tileIndex}`);
+    tileElement.classList.add("tile");
+    rowElement.append(tileElement);
+  });
+  tilesContainer.append(rowElement);
 });

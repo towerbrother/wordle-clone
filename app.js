@@ -1,6 +1,7 @@
 // get elements
 const tilesContainer = document.querySelector(".tiles-container");
 const keyboardContainer = document.querySelector(".keyboard-container");
+const messageContainer = document.querySelector(".message-container");
 
 // make keyboard
 const keys = [
@@ -67,3 +68,11 @@ tilesRows.forEach((row, rowIndex) => {
   });
   tilesContainer.append(rowElement);
 });
+
+// message
+const showMessage = (message) => {
+  const messageElement = document.createElement("p");
+  messageElement.textContent = message;
+  messageDisplay.append(messageElement);
+  setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
+};
